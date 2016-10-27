@@ -1,0 +1,33 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+        "target": "es5",
+        "module": "amd",
+        "declaration": true,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "lib": [
+            "es6",
+            "dom",
+            "es2015.promise"
+        ]
+    },
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./test/**/*.ts",
+        "./typings/index.d.ts",
+        "./custom_typings/**/*.d.ts",
+        "./jspm_packages/**/*.d.ts"
+    ],
+    "exclude": [
+        "test",
+        "dist",
+        "node_modules",
+        "src/xrhma-core.d.ts"
+    ],
+    "atom": {
+        "rewriteTsconfig": false
+    }
+}

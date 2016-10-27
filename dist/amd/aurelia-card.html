@@ -1,0 +1,12 @@
+<template>
+    <require from="jquery-ui/themes/base/resizable.css"></require>
+    
+    <div ref="card" class.bind="transparent?'card card-transparent':'card'" style="overflow:hidden">
+        <div class="card-header">
+            <slot name="header"></slot>
+        </div>
+        <div class="card-block">
+            <slot name="block"></slot>
+        </div>
+    </div>
+</template>

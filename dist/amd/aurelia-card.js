@@ -9,10 +9,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 define(["require", "exports", 'aurelia-framework', 'jquery', 'jquery-ui'], function (require, exports, aurelia_framework_1, $) {
     "use strict";
-    var CardCustomElement = (function () {
-        function CardCustomElement() {
+    var AureliaCardCustomElement = (function () {
+        function AureliaCardCustomElement() {
             this.transparent = false;
             this.resizable = false;
+            this.collapsible = false;
             this.handles = "s";
             this.allHandles = "n,s,w,e,ne,se,nw,sw";
             this.hHandles = "e,w";
@@ -28,10 +29,10 @@ define(["require", "exports", 'aurelia-framework', 'jquery', 'jquery-ui'], funct
             this.southWestHandleClass = this.handleClassPrefix + "sw";
             this.aspectRatio = false;
         }
-        CardCustomElement.prototype.aspectRatioChanged = function (newValue, oldValue) {
+        AureliaCardCustomElement.prototype.aspectRatioChanged = function (newValue, oldValue) {
             console.log("Aspect Ratio changed form " + oldValue + " to " + newValue);
         };
-        CardCustomElement.prototype.handlesChanged = function (newValue, oldValue) {
+        AureliaCardCustomElement.prototype.handlesChanged = function (newValue, oldValue) {
             if (newValue != oldValue) {
                 if (newValue == 'all') {
                     this.handles = this.allHandles;
@@ -44,7 +45,7 @@ define(["require", "exports", 'aurelia-framework', 'jquery', 'jquery-ui'], funct
                 }
             }
         };
-        CardCustomElement.prototype.attached = function () {
+        AureliaCardCustomElement.prototype.attached = function () {
             if (this.resizable) {
                 $(this.card).resizable({
                     handles: this.handles
@@ -81,26 +82,39 @@ define(["require", "exports", 'aurelia-framework', 'jquery', 'jquery-ui'], funct
                     console.log(swHandle);
                 }
             }
+            if (this.collapsible) {
+                $(this.card).collapse('show');
+            }
+        };
+        AureliaCardCustomElement.prototype.collapse = function () {
+            if (this.collapsible) {
+                $(this.card).collapse('toggle');
+                $(this.collapseBtn).toggleClass('rotate-up');
+            }
         };
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
-        ], CardCustomElement.prototype, "transparent", void 0);
+        ], AureliaCardCustomElement.prototype, "transparent", void 0);
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
-        ], CardCustomElement.prototype, "resizable", void 0);
+        ], AureliaCardCustomElement.prototype, "resizable", void 0);
+        __decorate([
+            aurelia_framework_1.bindable, 
+            __metadata('design:type', Boolean)
+        ], AureliaCardCustomElement.prototype, "collapsible", void 0);
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', String)
-        ], CardCustomElement.prototype, "handles", void 0);
+        ], AureliaCardCustomElement.prototype, "handles", void 0);
         __decorate([
             aurelia_framework_1.bindable, 
             __metadata('design:type', Boolean)
-        ], CardCustomElement.prototype, "aspectRatio", void 0);
-        return CardCustomElement;
+        ], AureliaCardCustomElement.prototype, "aspectRatio", void 0);
+        return AureliaCardCustomElement;
     }());
-    exports.CardCustomElement = CardCustomElement;
+    exports.AureliaCardCustomElement = AureliaCardCustomElement;
 });
 
 //# sourceMappingURL=aurelia-card.js.map

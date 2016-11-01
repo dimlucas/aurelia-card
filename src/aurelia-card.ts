@@ -2,12 +2,15 @@ import { bindable } from 'aurelia-framework';
 import * as $ from 'jquery';
 import 'jquery-ui';
 
-export class CardCustomElement {
+export class AureliaCardCustomElement {
 
     @bindable transparent: boolean = false;
 
     //The card's resizability defaults to false
     @bindable resizable: boolean = false;
+
+    //If set to true the card's contents will be collapsible
+    @bindable collapsible: boolean = false;
 
     //The handles that can be used for resizing. 
     //Predefined values: [all, horizontal, h, vertical, v]
@@ -29,6 +32,7 @@ export class CardCustomElement {
     //If set to true, the card's original aspect ratio will be maintained
     @bindable aspectRatio: boolean = false;
     card: any;
+    collapseBtn: any;
 
     aspectRatioChanged(newValue, oldValue) {
         console.log("Aspect Ratio changed form " + oldValue + " to " + newValue);
@@ -86,5 +90,19 @@ export class CardCustomElement {
                 console.log(swHandle);
             }
         }
+
+        //Called to solve a bug caused when the first call to .collapse() does nothing
+        if(this.collapsible){
+            $(this.card).collapse('show');
+        }
+    }
+
+    //Collapses the card's contents when the collapse button is clicked
+    collapse(): void{
+        if(this.collapsible){
+            $(this.card).collapse('toggle');
+            $(this.collapseBtn).toggleClass('rotate-up');
+        }
     }
 }
+

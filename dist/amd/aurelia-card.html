@@ -1,12 +1,16 @@
 <template>
+    <require from="bootstrap/css/bootstrap.min.css"></require>
+    <require from="bootstrap/js/bootstrap.min.js"></require>
     <require from="jquery-ui/themes/base/resizable.css"></require>
     
+    <div class.bind="(collapsible)? 'card-header clickable' : 'card-header'" click.trigger="collapse()">
+        <slot name="header"></slot>
+        <button if.bind="collapsible" ref="collapseBtn" class="btn icon-btn" ><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+    </div>
     <div ref="card" class.bind="transparent?'card card-transparent':'card'" style="overflow:hidden">
-        <div class="card-header">
-            <slot name="header"></slot>
-        </div>
         <div class="card-block">
-            <slot name="block"></slot>
+            <slot id="card-contents" name="block"></slot>
         </div>
     </div>
 </template>
+

@@ -1,7 +1,8 @@
 import 'jquery-ui';
-export declare class CardCustomElement {
+export declare class AureliaCardCustomElement {
     transparent: boolean;
     resizable: boolean;
+    collapsible: boolean;
     handles: string;
     private allHandles;
     private hHandles;
@@ -17,7 +18,9 @@ export declare class CardCustomElement {
     private southWestHandleClass;
     aspectRatio: boolean;
     card: any;
+    collapseBtn: any;
     aspectRatioChanged(newValue: any, oldValue: any): void;
     handlesChanged(newValue: any, oldValue: any): void;
     attached(): void;
+    collapse(): void;
 }

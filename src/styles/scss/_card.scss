@@ -1,0 +1,14 @@
+.card-header{
+    margin-left: $header-margin;
+}
+
+.card{
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 12px;
+    border-color: $card-border-color;
+    padding: 16px;
+    overflow: hidden;
+    box-shadow: none;
+    background-color: $card-background-color;
+}

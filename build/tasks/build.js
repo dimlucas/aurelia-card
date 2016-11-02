@@ -9,6 +9,7 @@ var notify = require('gulp-notify');
 var merge = require('merge2');
 var typescript = require('gulp-typescript');
 var debug = require('gulp-debug');
+var gulpSass = require('gulp-sass');
 
 // transpiles changed es6 files to SystemJS format
 // the plumber() call prevents 'pipe breaking' caused
@@ -35,6 +36,11 @@ gulp.task('build-system', function () {
   ]);
 });
 
+gulp.task('build-sass', function(){
+  return gulp.src(paths.sassSrc)
+              .pipe(gulpSass().on('error', gulpSass.logError))
+              .pipe(gulp.dest(paths.sassOutput));
+});
 
 gulp.task('copy-module-d-ts', function () {
   return gulp.src(paths.root + '/' + paths.packageName + '.d.ts')
@@ -63,7 +69,7 @@ gulp.task('build-css', function () {
 gulp.task('build', function (callback) {
   return runSequence(
     'clean',
-    ['build-system', 'build-html', 'build-css'],'copy-module-d-ts',
+    ['build-system', 'build-html', 'build-css', 'build-sass'],'copy-module-d-ts',
     callback
   );
 });

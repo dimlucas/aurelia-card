@@ -1,0 +1,12 @@
+.card-header {
+  margin-left: 16px; }
+
+.card {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 12px;
+  border-color: #ABB7B7;
+  padding: 16px;
+  overflow: hidden;
+  box-shadow: none;
+  background-color: #fff; }

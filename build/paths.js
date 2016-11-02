@@ -13,6 +13,8 @@ module.exports = {
   outputRoot: outputRoot,
   typings:outputRoot , 
   output: outputRoot,
+  sassSrc: appRoot + 'styles/scss/*.scss',
+  sassOutput: appRoot + 'styles/',
   doc:'./doc',
   e2eSpecsSrc: 'test/e2e/src/*.js',
   e2eSpecsDist: 'test/e2e/dist/',
